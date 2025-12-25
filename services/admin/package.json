@@ -1,0 +1,23 @@
+{
+  "name": "ecom-chat-admin",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.26",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.0.3",
+    "@types/react": "19.2.7",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "16.1.1",
+    "typescript": "5.9.3"
+  }
+}

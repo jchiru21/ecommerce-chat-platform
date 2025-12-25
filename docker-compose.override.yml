@@ -1,0 +1,28 @@
+services:
+  # API Server - Development with hot reload
+  api:
+    volumes:
+      - ./services/api/src:/app/src
+      - ./services/api/prisma:/app/prisma
+      - ./services/api/.env:/app/.env
+    environment:
+      - NODE_ENV=development
+    command: sh -c "npx prisma migrate deploy && npm run dev"
+
+  # Web Application - Development with hot reload
+  web:
+    volumes:
+      - ./services/web/src:/app/src
+      - ./services/web/public:/app/public
+    environment:
+      - NODE_ENV=development
+    command: npm run dev
+
+  # Admin Application - Development with hot reload
+  admin:
+    volumes:
+      - ./services/admin/src:/app/src
+      - ./services/admin/pages:/app/pages
+    environment:
+      - NODE_ENV=development
+    command: npm run dev

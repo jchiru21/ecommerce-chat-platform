@@ -1,0 +1,75 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: ecom-postgres
+    environment:
+      POSTGRES_DB: ecomdb
+      POSTGRES_USER: chiranjeevi
+      POSTGRES_PASSWORD: devpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./services/api/prisma/migrations:/docker-entrypoint-initdb.d/migrations
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chiranjeevi -d ecomdb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # API Server
+  api:
+    build:
+      context: ./services/api
+      dockerfile: Dockerfile
+    container_name: ecom-api
+    environment:
+      DATABASE_URL: postgresql://chiranjeevi:devpassword@postgres:5432/ecomdb
+      JWT_SECRET: devsecret
+      NODE_ENV: development
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./services/api/src:/app/src
+      - ./services/api/prisma:/app/prisma
+    command: sh -c "npx prisma migrate deploy && npm run dev"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Web Application
+  web:
+    build:
+      context: ./services/web
+      dockerfile: Dockerfile
+    container_name: ecom-web
+    environment:
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+
+  # Admin Application
+  admin:
+    build:
+      context: ./services/admin
+      dockerfile: Dockerfile
+    container_name: ecom-admin
+    environment:
+      NODE_ENV: production
+    ports:
+      - "3001:3001"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
