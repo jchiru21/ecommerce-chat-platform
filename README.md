@@ -231,7 +231,3 @@ lsof -ti:3000,3001,4000,4001 | xargs kill -9
 cd services/api
 npx prisma migrate reset --force
 ```
-
----
-
-**Happy coding! 🎉**
