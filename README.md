@@ -1,28 +1,3 @@
-# 🛒 Ecom Chat - Full-Stack E-Commerce with Real-Time Chat
-
-A modern e-commerce platform with real-time messaging, admin dashboard, and animated UI.
-
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
-
-## ✨ Features
-
-- **🛍️ E-Commerce**: Product catalog, shopping cart, order management
-- **💬 Real-Time Chat**: Live messaging between users via Socket.io
-- **👑 Admin Dashboard**: User management, order oversight, product CRUD
-- **🎨 Modern UI**: Framer Motion animations, responsive design
-- **🔐 Authentication**: JWT-based login/registration system
-
-## 🏗️ Tech Stack
-
-**Backend**: Node.js + Express + PostgreSQL + Prisma + Socket.io  
-**Frontend**: Next.js + React + TypeScript + Framer Motion  
-**Database**: PostgreSQL with Prisma ORM
-
-## 🚀 Quick Start
-
 ### Prerequisites
 - Node.js (v16+)
 - pnpm
@@ -72,7 +47,7 @@ pnpm run dev
 - **Admin Portal**: http://localhost:3001/admin-login
 - **API Server**: http://localhost:4000
 
-## � Docker Deployment
+## Docker Deployment
 
 ### Production Setup
 ```bash
@@ -162,7 +137,7 @@ PUT /admin/products/:id - Update product
 WebSocket: /socket.io - Live messaging
 ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 ecom-chat/
@@ -178,7 +153,7 @@ ecom-chat/
 └── README.md
 ```
 
-## 🔧 Development Scripts
+##  Development Scripts
 
 ```bash
 # Quick start all services
@@ -203,7 +178,7 @@ pnpm install          # Install deps
 pnpm run dev          # Start admin web server (Port 3001)
 ```
 
-## 🔒 Environment Setup
+##  Environment Setup
 
 Create `.env` files:
 
@@ -219,7 +194,7 @@ NEXT_PUBLIC_API_URL=http://localhost:4000
 NEXT_PUBLIC_SOCKET_URL=http://localhost:4001
 ```
 
-## 🆘 Troubleshooting
+##  Troubleshooting
 
 **Port conflicts**: Kill processes on ports 3000, 3001, 4000, 4001
 ```bash
