@@ -3,7 +3,7 @@
 - pnpm
 - PostgreSQL
 
-### 🐳 Docker Setup (Recommended)
+### Docker Setup (Recommended)
 ```bash
 # Clone repository
 git clone <repository-url>
@@ -108,7 +108,7 @@ docker-compose exec api npx prisma migrate reset --force
 3. Manage users, orders, and products
 4. Update order statuses
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### Authentication
 ```
