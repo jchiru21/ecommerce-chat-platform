@@ -94,7 +94,7 @@ docker-compose exec api npx prisma migrate deploy
 docker-compose exec api npx prisma migrate reset --force
 ```
 
-## �📖 Usage
+## Usage
 
 ### For Users
 1. Register/Login account
